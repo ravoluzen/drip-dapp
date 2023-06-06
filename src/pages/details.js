@@ -7,7 +7,7 @@ export default function Details() {
   const { authorized, accountDetails } = useContext(AuthContext);
   const router = useRouter()
 
-  if(!authorized) () => router.push('/')
+  if(authorized === false ) () => router.push('/')
 
   return (
     <main className='p-4 min-h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-black via-purple-700 via-50% to-black'>
