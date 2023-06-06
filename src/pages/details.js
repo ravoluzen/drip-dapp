@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import AuthContext from '@/context/AuthContext'
 import { DetailCard } from "@/components/details/DetailCard"
 import { useRouter } from "next/router"
@@ -7,7 +7,11 @@ export default function Details() {
   const { authorized, accountDetails } = useContext(AuthContext);
   const router = useRouter()
 
-  if(authorized === false ) () => router.push('/')
+  useEffect(() => {
+    if (!authorized) {
+      router.push('/'); // Redirect to the login page
+    }
+  }, [authorized]);
 
   return (
     <main className='p-4 min-h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-black via-purple-700 via-50% to-black'>
